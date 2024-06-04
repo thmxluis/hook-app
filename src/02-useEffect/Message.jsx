@@ -2,9 +2,13 @@ import { useEffect } from "react";
 
 export const Message = () => {
   useEffect(() => {
-    console.log("Componente Montado");
+    const onMauseMove = ({ x, y }) => {
+      const coors = { x, y };
+      console.log(coors);
+    };
+    window.addEventListener("mousemove", onMauseMove);
     return () => {
-      console.log("Componente Desmontado");
+      window.removeEventListener("mousemove", onMauseMove);
     };
   }, []);
   return (
